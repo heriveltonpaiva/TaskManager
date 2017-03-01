@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -15,16 +16,19 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="os")
+@SequenceGenerator(name="sequence", sequenceName="os_seq", allocationSize=1)
 public class Os implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="sequence")
 	private int id;
 	
-	private String descricao;
+	private Integer numero;
 
+	private String descricao;
+	
 	public int getId() {
 		return id;
 	}
@@ -33,15 +37,18 @@ public class Os implements Serializable{
 		this.id = id;
 	}
 
+	public Integer getNumero() {
+		return numero;
+	}
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+	
 	public String getDescricao() {
 		return descricao;
 	}
-
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
-	
-	
 	
 }

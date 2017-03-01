@@ -10,7 +10,7 @@ CREATE DATABASE "TaskManager"
 
 CREATE TABLE public.sprint(
 	id integer,
-	nome integer NOT NULL,
+	nome varchar NOT NULL,
 	data_inicio timestamp with time zone NOT NULL,
 	data_final timestamp with time zone,
 	CONSTRAINT sprint_pk PRIMARY KEY (id)
@@ -28,6 +28,7 @@ CREATE TABLE public.cliente(
 CREATE TABLE public.os(
 	id integer NOT NULL,
 	numero integer NOT NULL,
+	descricao varchar NOT NULL,
 	CONSTRAINT os_pk PRIMARY KEY (id)
 
 );
@@ -136,3 +137,21 @@ ON DELETE SET NULL ON UPDATE CASCADE NOT DEFERRABLE;
 ALTER TABLE public.erro ADD CONSTRAINT tarefa_fk FOREIGN KEY (id_tarefa)
 REFERENCES public.tarefa (id) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE NOT DEFERRABLE;
+
+-- Criação de Sequences
+CREATE SEQUENCE cliente_seq;
+CREATE SEQUENCE os_seq
+CREATE SEQUENCE erro_seq;
+CREATE SEQUENCE modulo_seq;
+CREATE SEQUENCE sistema_seq;
+CREATE SEQUENCE sprint_seq;
+CREATE SEQUENCE status_tarefa_seq;
+CREATE SEQUENCE tarefa_seq;
+CREATE SEQUENCE tarefa_sprint_seq;
+CREATE SEQUENCE tipo_erro_seq;
+
+-- Insert dos sistemas
+INSERT INTO sistema VALUES (1, 'SIGAA');
+INSERT INTO sistema VALUES (2, 'SIPAC');
+INSERT INTO sistema VALUES (3, 'SIGRH');
+INSERT INTO sistema VALUES (4, 'SIGADMIN');

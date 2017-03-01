@@ -1,5 +1,5 @@
 //criação do módulo principal da aplicação
-var appCliente = angular.module("appCliente",[]);
+var appCliente = angular.module("app",[]);
 
 //criação de controllers
 

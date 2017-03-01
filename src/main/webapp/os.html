@@ -5,7 +5,7 @@ Version: 1.0.0
 Purchase: http://wrapbootstrap.com
 -->
 
-<html xmlns="http://www.w3.org/1999/xhtml" ng-app="appCliente">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
 <!-- Head -->
 <head>
 <meta charset="utf-8" />
@@ -44,9 +44,10 @@ Purchase: http://wrapbootstrap.com
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
 <script src="./js/app.js"></script>
+<script src="./js/os-controller.js"></script>
 </head>
 <!-- /Head -->
-<body ng-controller="clienteController">
+<body ng-controller="osController">
 	<!-- Navbar -->
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -72,14 +73,14 @@ Purchase: http://wrapbootstrap.com
 	<div class="page-breadcrumbs">
 		<ul class="breadcrumb">
 			<li><i class="fa fa-home"></i> <a href="index.html">TaskManager</a></li>
-			<li class="active">Cliente</li>
+			<li class="active">OS - Ordem de Serviço</li>
 		</ul>
 	</div>
 	<!-- /Page Breadcrumb -->
 	<!-- Page Header -->
 	<div class="page-header position-relative">
 		<div class="header-title">
-			<h1>Cadastrar Cliente</h1>
+			<h1>Cadastrar Ordem de Serviço</h1>
 		</div>
 		<!--Header Buttons-->
 		<div class="header-buttons">
@@ -100,14 +101,16 @@ Purchase: http://wrapbootstrap.com
 						<form role="form">
 							<div class="col-sm-3">
 								<div class="form-group" >
-									<span class="input-icon icon-right"> <input type="text" ng-model="cliente.nome"
-										class="form-control" id="nomeInput" placeholder="Nome">
+									<span class="input-icon icon-right"> <input type="text" ng-model="os.numero"
+										class="form-control" id="inputNumero" placeholder="Numero">
+										<input type="text" ng-model="os.descricao"
+										class="form-control" id="inputDescricao" placeholder="Descrição">
 										<i class="glyphicon glyphicon-user circular"></i>
 									</span>
 								</div>
 							</div>
 							<div class="form-group">
-								<input type="button" class="btn btn-blue" ng-click="salvarCliente()" value="Salvar
+								<input type="button" class="btn btn-blue" ng-click="salvarOs()" value="Salvar
 									Registro" />
 							</div>
 						</form>
@@ -122,7 +125,7 @@ Purchase: http://wrapbootstrap.com
 		<div class="col-xs-12 col-md-12">
 			<div>
 				<div class="widget-header bordered-bottom bordered-yellow">
-					<span class="widget-caption">Lista de Clientes</span>
+					<span class="widget-caption">Lista de Ordem de Serviços</span>
 					<div class="widget-buttons">
 						<a href="#" data-toggle="maximize"> <i class="fa fa-expand"></i>
 						</a> <a href="#" data-toggle="collapse"> <i class="fa fa-minus"></i>
@@ -135,8 +138,10 @@ Purchase: http://wrapbootstrap.com
 						id="searchable">
 						<thead class="bordered-darkorange">
 							<tr role="row">
-								<th>Nome</th>
+								<th>Numero</th>
+								<th>Descrição</th>
 								<th></th>
+								
 							</tr>
 						</thead>
 
@@ -149,8 +154,9 @@ Purchase: http://wrapbootstrap.com
 							</tr>
 						</tfoot>
 						<tbody>
-							<tr ng-repeat="cli in clientes">
-								<td class=" sorting_1">{{cli.nome}}</td>
+							<tr ng-repeat="ordem in lista">
+								<td class=" sorting_1">{{ordem.numero}}</td>
+								<td class=" sorting_2">{{ordem.descricao}}</td>
 								<td><a href="#" class="btn btn-info btn-xs edit"><i
 										class="fa fa-edit"></i> Editar</a> <a href="#"
 									class="btn btn-danger btn-xs delete"><i
